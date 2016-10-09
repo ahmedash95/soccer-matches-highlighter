@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Match;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -11,17 +10,22 @@ class HomeController extends Controller
     {
         $data['nextMatch'] = $this->getNextMatch();
         $data['nextFiveMatches'] = $this->getNextFiveMatchs();
-        return view('welcome',$data);
+
+        return view('welcome', $data);
     }
-    public function getNextFiveMatchs(){
-        return Match::where('start_at','>=',new \Carbon\Carbon())
+
+    public function getNextFiveMatchs()
+    {
+        return Match::where('start_at', '>=', new \Carbon\Carbon())
                 ->orderBy('created_at')
                 ->skip(1)
                 ->limit(5)
                 ->get();
     }
-    public function getNextMatch(){
-        return Match::where('start_at','>=',new \Carbon\Carbon())
+
+    public function getNextMatch()
+    {
+        return Match::where('start_at', '>=', new \Carbon\Carbon())
                 ->orderBy('created_at')
                 ->first();
     }

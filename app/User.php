@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
@@ -11,7 +11,7 @@ class User extends Authenticatable
 
     private static $userTypes = [
         0 => 'Admin',
-        1 => 'Moderator'
+        1 => 'Moderator',
     ];
     /**
      * The attributes that are mass assignable.
@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','type'
+        'name', 'email', 'password', 'type',
     ];
 
     /**
@@ -30,7 +30,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public static function findTypeByKey($key){
-        return array_search($key,self::$userTypes);
+
+    public static function findTypeByKey($key)
+    {
+        return array_search($key, self::$userTypes);
     }
 }

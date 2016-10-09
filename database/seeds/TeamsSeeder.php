@@ -12,9 +12,9 @@ class TeamsSeeder extends Seeder
      */
     public function run()
     {
-    	Auth::login(\App\User::first());
+        Auth::login(\App\User::first());
         foreach (range('A', 'Z') as $char) {
-        	Team::create(['name' => 'TEAM '.$char]);
-		}
+            Team::create(['name' => 'TEAM '.$char]);
+        }
     }
 }

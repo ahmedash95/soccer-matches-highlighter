@@ -11,13 +11,15 @@ class MatchesController extends PanelController
     public function index()
     {
         $matches = Match::all();
-        return view($this->panelViewPath . 'matches.index', compact('matches'));
+
+        return view($this->panelViewPath.'matches.index', compact('matches'));
     }
 
     public function create()
     {
         $teams = Team::all();
-        return view($this->panelViewPath . 'matches.create', compact('teams'));
+
+        return view($this->panelViewPath.'matches.create', compact('teams'));
     }
 
     public function store(Request $request)
@@ -33,7 +35,7 @@ class MatchesController extends PanelController
             'title'      => $request->input('name'),
             'home_team'  => $request->input('home_team'),
             'guest_team' => $request->input('guest_team'),
-            'start_at'   => $request->input('start_at_date') . ' ' . $request->input('start_at_time'),
+            'start_at'   => $request->input('start_at_date').' '.$request->input('start_at_time'),
         ]);
         //@todo Alert
         return redirect()->route('matches.index');
@@ -43,13 +45,14 @@ class MatchesController extends PanelController
     {
         $match = Match::findOrFail($id);
         $teams = Team::all();
-        return view($this->panelViewPath . 'matches.edit', compact('match', 'teams'));
+
+        return view($this->panelViewPath.'matches.edit', compact('match', 'teams'));
     }
 
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name'          => 'required|unique:matches,title,' . $id,
+            'name'          => 'required|unique:matches,title,'.$id,
             'home_team'     => 'required|exists:teams,id',
             'guest_team'    => 'required|exists:teams,id',
             'start_at_date' => 'required|date',
@@ -60,7 +63,7 @@ class MatchesController extends PanelController
                 'title'      => $request->input('name'),
                 'home_team'  => $request->input('home_team'),
                 'guest_team' => $request->input('guest_team'),
-                'start_at'   => $request->input('start_at_date') . ' ' . $request->input('start_at_time'),
+                'start_at'   => $request->input('start_at_date').' '.$request->input('start_at_time'),
             ]);
         //@todo Alert
         return redirect()->route('matches.index');

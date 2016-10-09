@@ -12,23 +12,27 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-    	$this->makeAdmin();
-    	$this->makeModerator();
+        $this->makeAdmin();
+        $this->makeModerator();
     }
-    public function makeAdmin(){
-        $user = new User;
-    	$user->name = 'Admin';
-    	$user->email = 'admin@app.dev';
-    	$user->password = bcrypt(123456);
-    	$user->type = User::findTypeByKey('Admin');
-    	$user->save();
+
+    public function makeAdmin()
+    {
+        $user = new User();
+        $user->name = 'Admin';
+        $user->email = 'admin@app.dev';
+        $user->password = bcrypt(123456);
+        $user->type = User::findTypeByKey('Admin');
+        $user->save();
     }
-    public function makeModerator(){
-        $user = new User;
-    	$user->name = 'Admin';
-    	$user->email = 'moderator@app.dev';
-    	$user->password = bcrypt(123456);
-    	$user->type = User::findTypeByKey('Moderator');
-    	$user->save();
+
+    public function makeModerator()
+    {
+        $user = new User();
+        $user->name = 'Admin';
+        $user->email = 'moderator@app.dev';
+        $user->password = bcrypt(123456);
+        $user->type = User::findTypeByKey('Moderator');
+        $user->save();
     }
 }

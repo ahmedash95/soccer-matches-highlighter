@@ -12,19 +12,23 @@
 ### INSTALL
 
 install app dependencies
+
 ``` 
 composer install 
 ```
+
 install js dependecies packages
+
 ```
 npm install
 ```
 
 ### Config App
-**Note:** make your .env file and set your database confguration and set
-```BROADCAST_DRIVER=redis```
+
+**Note: make your .env file and set your database confguration and set BROADCAST_DRIVER=redis**
 
 Run Migrations with Seeds
+
 ```
 php artisan migrate && php artisan db:seed
 ```

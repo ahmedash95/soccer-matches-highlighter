@@ -10,12 +10,13 @@ class TeamsController extends PanelController
     public function index()
     {
         $teams = Team::all();
-        return view($this->panelViewPath . 'teams.index', compact('teams'));
+
+        return view($this->panelViewPath.'teams.index', compact('teams'));
     }
 
     public function create()
     {
-        return view($this->panelViewPath . 'teams.create');
+        return view($this->panelViewPath.'teams.create');
     }
 
     public function store(Request $request)
@@ -29,12 +30,13 @@ class TeamsController extends PanelController
     public function edit($id)
     {
         $team = Team::findOrFail($id);
-        return view($this->panelViewPath . 'teams.edit', compact('team'));
+
+        return view($this->panelViewPath.'teams.edit', compact('team'));
     }
 
     public function update(Request $request, $id)
     {
-        $this->validate($request, ['name' => 'required|unique:teams,name,' . $id]);
+        $this->validate($request, ['name' => 'required|unique:teams,name,'.$id]);
         Team::findOrFail($id)
             ->update(['name' => $request->input('name')]);
         //@todo Alert

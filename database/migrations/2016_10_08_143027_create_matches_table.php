@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateMatchesTable extends Migration
 {
@@ -16,13 +16,13 @@ class CreateMatchesTable extends Migration
         Schema::create('matches', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            
+
             $table->integer('home_team')->unsigned()->nullable();
             $table->foreign('home_team')->references('id')->on('teams')->onDelete('set null');
-            
+
             $table->integer('guest_team')->unsigned()->nullable();
             $table->foreign('guest_team')->references('id')->on('teams')->onDelete('set null');
-            
+
             $table->timestamps();
         });
     }

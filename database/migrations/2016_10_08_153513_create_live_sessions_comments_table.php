@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateLiveSessionsCommentsTable extends Migration
 {
@@ -15,7 +15,7 @@ class CreateLiveSessionsCommentsTable extends Migration
     {
         Schema::create('live_sessions_comments', function (Blueprint $table) {
             $table->increments('id');
-            
+
             $table->integer('match_id')->unsigned();
             $table->foreign('match_id')->references('id')->on('matches')->onDelete('cascade');
 
